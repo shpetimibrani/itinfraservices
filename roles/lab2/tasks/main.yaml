@@ -5,6 +5,11 @@
 - name: Show processes
   debug:
     var: processes.stdout_lines
+    
+- name: Ensure 'sysadmins' group exists
+  group:
+    name: sysadmins
+    state: present
 
 - name: Create users 'romankuchin' and 'hudolejev' part of 'sysadmins' group
   user:
