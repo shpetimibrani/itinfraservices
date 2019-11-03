@@ -1,0 +1,6 @@
+[wordpress-server]
+ubuntu-server
+
+[mysql-server]
+ubuntu-server
+
