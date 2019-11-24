@@ -1,0 +1,28 @@
+zone "shibra.int" {
+{% if dns_role == "master" %}
+	type master;
+	file "/etc/bind/db.shibra";
+  allow-transfer {192.168.91.129;};
+	notify yes;
+{% else %}
+  type slave;
+  file "/var/lib/bind/db.shibra";
+  masters {
+    {{ master_ip }};
+  };
+{% endif %}
+};
+
+zone "56.168.192.in-addr.arpa" {
+{% if dns_role == "master" %}
+	type master;
+	file "/etc/bind/db.shibra.ptr";
+  allow-transfer {192.168.91.129;};
+{% else %}
+  type slave;
+  file "/var/lib/bind/db.shibra.ptr";
+  masters {
+    {{ master_ip }};
+  };
+{% endif %}
+};
