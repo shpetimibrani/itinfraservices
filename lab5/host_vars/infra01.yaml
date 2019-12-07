@@ -1,3 +1,2 @@
 ---
 dns_role: master
-ansible_connection: local

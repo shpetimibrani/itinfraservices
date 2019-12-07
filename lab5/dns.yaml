@@ -5,7 +5,6 @@
     - name: Install bind9
       apt: 
         name=bind9 
-        update_cache=yes 
         state=latest
 
     - name: configure bind

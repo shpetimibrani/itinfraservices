@@ -17,14 +17,14 @@ records:
   - type: A
     entries:
       - name: infra01.shibra.int.
-        address: 192.168.91.128
-      - name: infra02.shibra.int.
         address: 192.168.91.129
+      - name: infra02.shibra.int.
+        address: 192.168.91.130
       - name: infra.shibra.int.
         addresses:
-          - 192.168.91.128
           - 192.168.91.129
+          - 192.168.91.130
   - type: CNAME
     entries:
-      - name: mysite
+      - name: site
         address: infra02
