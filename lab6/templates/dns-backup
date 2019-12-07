@@ -1,0 +1,4 @@
+11 0 * * *    {{ backup_user }}  cd /etc/bind && cp named.conf named.conf.options named.conf.local db.shibra db.shibra.ptr /var/backup/dns/
+22 0 * * 0    {{ backup_user }}  duplicity --no-encryption full /var/backup/dns/ rsync://{{ backup_server }}//srv/backup/dns/
+22 0 * * 1-6  {{ backup_user }}  duplicity --no-encryption incremental /var/backup/dns/ rsync://{{ backup_server }}//srv/backup/dns/
+11 0 * * 0    {{ backup_user }}  duplicity delete-older-than 30d rsync://{{ backup_server }}//srv/backup/dns/

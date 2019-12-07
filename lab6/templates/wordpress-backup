@@ -1,0 +1,4 @@
+11 0 * * *    backupmanager  cp -R /var/www/html /var/backup/wordpress
+22 0 * * 0    {{ backup_user }}  duplicity --no-encryption full /var/www/html/ rsync://{{ backup_server }}//srv/backup/wordpress/
+22 0 * * 1-6  {{ backup_user }}  duplicity --no-encryption incremental /var/www/html/ rsync://{{ backup_server }}//srv/backup/wordpress/
+11 0 * * 0    {{ backup_user }}  duplicity delete-older-than 30d rsync://{{ backup_server }}//srv/backup/wordpress/

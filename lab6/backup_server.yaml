@@ -1,0 +1,29 @@
+- name: Setup backup server
+  hosts: backup-server
+  become: yes
+  tasks:
+    - name: Create backup user
+      user:
+        name: "{{ backup_user }}"
+        shell: /bin/bash
+
+    - name: Add pubkey
+      authorized_key:
+        user: "{{ backup_user }}"
+        key: "{{ lookup('file', item) }}"
+        state: present
+      with_fileglob:
+        - keys/id_rsa.pub
+
+    - name: Create a directory if it does not exist
+      file:
+        path: "{{ item }}"
+        state: directory
+        mode: '0775'
+        owner: "{{ backup_user }}"
+        group: "{{ backup_user }}"
+      with_items:
+      - "/srv/backup"
+      - "/srv/backup/mysql"
+      - "/srv/backup/wordpress"
+      - "/srv/backup/dns"

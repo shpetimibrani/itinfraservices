@@ -1,0 +1,5 @@
+[backup-agent]
+infra01 ansible_host=192.168.91.129
+
+[backup-server]
+infra02 ansible_host=192.168.91.130
