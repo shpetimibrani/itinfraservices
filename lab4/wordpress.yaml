@@ -64,21 +64,19 @@
 
   - name: Install python modules for ansible
     apt: 
-      name: ['python-pip', 'python-setuptools', 'libmysqlclient-dev', 'python-dev']
+      name: ['python-pip', 'python-setuptools', 'libmysqlclient-dev', 'python-dev','python-pymysql']
       update_cache: yes 
       state: latest
 
-  - name: Install MySQL python module for ansible
-    pip: 
-      name=MySQL-python
-
   - name: Create database
     mysql_db:
+      login_unix_socket: /var/run/mysqld/mysqld.sock
       name: "{{ db_name }}"
       state: present
 
   - name: Create database user
     mysql_user:
+      login_unix_socket: /var/run/mysqld/mysqld.sock
       name: "{{ db_user }}"
       password: "{{ db_password }}"
       priv: 'wordpress.*:ALL'
