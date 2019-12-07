@@ -1,6 +1,6 @@
 [wordpress-server]
-ubuntu-server
+infra01 ansible_host=192.168.91.129
 
 [mysql-server]
-ubuntu-server
+infra01 ansible_host=192.168.91.129
 
