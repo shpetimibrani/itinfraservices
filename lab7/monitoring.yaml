@@ -1,0 +1,32 @@
+---
+- name: Create users
+  hosts: linux
+  become: yes
+  tasks:
+  - name: Create users
+    user: 
+      name: "{{ item }}"
+      shell: /sbin/nologin 
+    with_items:
+    - node_exporter
+    - apache_exporter
+    - sql_exporter
+    - prometheus
+    - bind 
+
+
+- name: exporters
+  hosts: linux
+  become: yes
+  roles:
+    - node_exporter
+    - apache_exporter
+    - sql_exporter
+    - bind
+
+- name: prometheus
+  hosts: prometheus
+  become: yes
+  roles:
+    - prometheus
+    - grafana
