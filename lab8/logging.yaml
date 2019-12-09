@@ -1,0 +1,28 @@
+---
+- name: init
+  become: yes
+  hosts: linux
+  roles:
+    - init
+
+- name: bind
+  become: yes
+  hosts: linux
+  roles:
+    - bind
+  tags:
+    - bind
+
+- name: influx
+  become: yes
+  hosts: infra02
+  roles:
+    - influxdb
+
+- name: grafana
+  become: yes
+  hosts: infra01
+  roles:
+    - grafana
+  tags:
+    - grafana
