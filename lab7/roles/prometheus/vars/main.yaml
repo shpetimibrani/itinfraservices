@@ -1,4 +1,6 @@
 ---
+db_name: "wordpress"
+
 prometheus_db_password: !vault |
         $ANSIBLE_VAULT;1.2;AES256;dev
         35346363623834306535346433353761306332333133346564626530346636623065383231623934

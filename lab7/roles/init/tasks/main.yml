@@ -52,17 +52,14 @@
   - hudolejev
   - dev
 
+
 - name: Create users
-  hosts: linux
-  become: yes
-  tasks:
-  - name: Create users
-    user: 
-      name: "{{ item }}"
-      shell: /sbin/nologin 
-    with_items:
-    - node_exporter
-    - apache_exporter
-    - sql_exporter
-    - prometheus
-    - bind 
+  user: 
+    name: "{{ item }}"
+    shell: /sbin/nologin 
+  with_items:
+  - node_exporter
+  - apache_exporter
+  - sql_exporter
+  - prometheus
+  - bind 
