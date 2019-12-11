@@ -1,0 +1,27 @@
+---
+- name: init
+  become: yes
+  hosts: all
+  roles:
+    - init
+    
+- name: bind
+  become: yes
+  hosts: all
+  roles:
+    - bind
+
+- name: Infra01
+  become: yes
+  hosts: infra01
+  roles:
+    - haproxy
+    - wordpress
+    
+- name: Infra02
+  become: yes
+  hosts: infra02
+  roles:
+    - mysql
+    
+
