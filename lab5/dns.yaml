@@ -5,7 +5,7 @@
     - name: Install bind9
       apt: 
         name=bind9 
-        state=latest
+        update_cache=yes
 
     - name: configure bind
       template:
@@ -47,6 +47,11 @@
       template:
         src: resolv.conf.j2
         dest: /etc/resolv.conf
+
+    - name: Restart bind9 anyway cuz why not
+      service:
+        name: bind9
+        state: restarted
 
   handlers:
     - name: check conf
