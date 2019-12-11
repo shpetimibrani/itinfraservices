@@ -1,0 +1,27 @@
+---
+prometheus_version: "2.13.1"
+jobs:
+  - name: prometheus
+    port: 9090
+    targets:
+      - localhost
+  - name: linux
+    port: 9100
+    targets:
+      - infra01.shibra.int
+      - infra02.shibra.int
+  - name: bind
+    port: 9119
+    targets:
+      - ns1.shibra.int
+      - ns2.shibra.int
+  - name: apache
+    port: 9117
+    targets:
+      - infra01.shibra.int
+      - infra02.shibra.int
+  - name: MySQL
+    port: 9104
+    targets:
+      - infra01.shibra.int
+      - infra02.shibra.int

@@ -1,0 +1,12 @@
+$TTL	604800
+@	IN	SOA	shibra.int. root.shibra.int. (
+			      4		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+;
+	IN	NS	infra01.shibra.int.
+	IN	NS	infra02.shibra.int.
+102	IN	PTR	infra01.shibra.int.
+103	IN	PTR	infra02.shibra.int.
