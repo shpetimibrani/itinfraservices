@@ -1,0 +1,6 @@
+- name: install
+  apt:
+    package: ['influxdb', 'influxdb-client', 'python-pip', 'python3-pip']
+
+- pip:
+    name: ['requests', 'influxdb']

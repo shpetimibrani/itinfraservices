@@ -1,0 +1,33 @@
+- name: Setup interface
+  template:
+    src: templates/ens38.j2
+    dest: /etc/netplan/55-ens38.yaml
+  notify:
+      - netplan apply
+      - systemd-resolved
+
+- name: Temporarily set nameservers to Google DNS so we can reach the interwebz
+  template:
+    src: resolv.temp.conf.j2
+    dest: /etc/resolv.conf
+    
+- name: Disable sudo password for created users
+  copy:
+    dest: /etc/sudoers.d/{{ item }}
+    content: "{{ item }}      ALL = NOPASSWD: ALL"
+  with_items:
+  - romankuchin
+  - hudolejev
+  - dev
+
+
+- name: Create users for services
+  user: 
+    name: "{{ item }}"
+    shell: /sbin/nologin 
+  with_items:
+  - node_exporter
+  - apache_exporter
+  - sql_exporter
+  - prometheus
+  - bind 

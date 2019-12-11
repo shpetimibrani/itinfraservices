@@ -1,0 +1,45 @@
+---
+forwarders:
+  - 8.8.8.8
+  - 1.1.1.1
+  - 9.9.9.10
+localnets:
+  - 192.168.91.0/24
+  - 192.168.56.0/24
+  - 10.0.2.0/24
+  - localhost
+records:
+  - type: NS
+    entries:
+      - name: shibra.int.
+        address: infra01.shibra.int.
+      - name: shibra.int.
+        address: infra02.shibra.int.
+  - type: A
+    entries:
+      - name: infra01.shibra.int.
+        address: 192.168.56.102
+      - name: infra02.shibra.int.
+        address: 192.168.56.103
+      - name: infra.shibra.int.
+        addresses:
+          - 192.168.56.102
+          - 192.168.56.103
+  - type: CNAME
+    entries:
+      - name: ns
+        address: infra
+      - name: ns1
+        address: infra01
+      - name: ns2
+        address: infra02
+      - name: web
+        address: infra01
+      - name: grafana
+        address: infra02
+      - name: prometheus
+        address: infra02
+      - name: influxdb
+        address: infra02
+      - name: db
+        address: infra02

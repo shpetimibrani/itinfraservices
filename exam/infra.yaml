@@ -1,0 +1,44 @@
+---
+- name: DNS
+  become: yes
+  hosts: all
+  roles:
+    - bind
+
+- name: Application server (Haproxy + wordpress)
+  become: yes
+  hosts: infra01
+  roles:
+    - haproxy
+    - wordpress
+
+- name: Backend server MySQL
+  become: yes
+  hosts: infra02
+  roles:
+    - mysql
+
+
+- name: exporters on infra01 and infra02
+  hosts: all
+  become: yes
+  roles:
+    - node_exporter
+    - bind_exporter
+    - telegraf
+
+- name: exporters on infra02
+  hosts: infra02
+  become: yes
+  roles:
+    - mysql_exporter
+
+
+- name: Monitoring server (influx + prometheus + grafana)
+  become: yes
+  hosts: infra02
+  roles:
+    - prometheus
+    - grafana
+    - influxdb
+

@@ -1,0 +1,9 @@
+- name: restart telegraf
+  service:
+    name: telegraf
+    state: restarted
+
+- name: restart rsyslog
+  service:
+    name: rsyslog
+    state: restarted
