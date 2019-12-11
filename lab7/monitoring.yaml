@@ -1,19 +1,9 @@
 ---
-- name: Create users
-  hosts: linux
+- name: Init
+  hosts: all
   become: yes
-  tasks:
-  - name: Create users
-    user: 
-      name: "{{ item }}"
-      shell: /sbin/nologin 
-    with_items:
-    - node_exporter
-    - apache_exporter
-    - sql_exporter
-    - prometheus
-    - bind 
-
+  roles:
+    - init
 
 - name: exporters
   hosts: linux
