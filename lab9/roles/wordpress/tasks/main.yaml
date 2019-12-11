@@ -23,5 +23,5 @@
          WORDPRESS_DB_PASSWORD={{ db_password }},
          WORDPRESS_DB_NAME={{ db_name }}
       dns_servers:
-        - 192.168.91.129
-        - 192.168.91.130
+        - 192.168.56.102
+        - 192.168.56.103
