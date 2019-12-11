@@ -1,10 +1,4 @@
 ---
-- name: init
-  become: yes
-  hosts: linux
-  roles:
-    - init
-
 - name: bind
   become: yes
   hosts: linux

@@ -1,9 +1,3 @@
-- name: Init
-  hosts: all
-  become: yes
-  roles:
-    - init
-
 - name: Setup bind on all machines
   become: yes
   hosts: all
