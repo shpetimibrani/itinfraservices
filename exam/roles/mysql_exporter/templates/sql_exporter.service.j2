@@ -6,7 +6,7 @@ After=network.target
 [Service]
 User=sql_exporter
 Group=sql_exporter
-Environment="DATA_SOURCE_NAME=prometheus:{{ prometheus_db_password }}@tcp(127.0.0.1:3306)/wordpress"
+Environment="DATA_SOURCE_NAME=prometheus:{{ prometheus_db_password }}@tcp(127.0.0.1:3306)/"
 Type=simple
 ExecStart=/opt/sql_exporter/mysqld_exporter
 
