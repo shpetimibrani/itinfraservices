@@ -32,6 +32,14 @@
     state: present
     login_unix_socket: /var/run/mysqld/mysqld.sock
 
+- name: Create user 
+  mysql_user:
+    name: "prometheus"
+    password: "{{ prometheus_db_password }}"
+    priv: '*.*:ALL'
+    state: present
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+
 - name: listen on 0.0.0.0 if not already
   ini_file:
     dest: /etc/mysql/mysql.conf.d/mysqld.cnf
