@@ -1,14 +1,3 @@
-- name: check conf
-  shell: named-checkconf
-
-- name: restart bind
-  service:
-    name: bind9
-    state: restarted
-
-- name: bind reload db
-  shell: rndc reload
-
 - name: get timestamp
   shell: "date +%s"
   register: timestamp
@@ -17,3 +6,14 @@
   template:
     src: templates/db.shibra.j2
     dest: /etc/bind/db.shibra
+
+- name: check conf
+  shell: named-checkconf
+
+- name: bind reload db
+  shell: rndc reload
+
+- name: restart bind
+  service:
+    name: bind9
+    state: restarted
