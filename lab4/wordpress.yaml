@@ -64,7 +64,7 @@
 
   - name: Install python modules for ansible
     apt: 
-      name: ['python-pymysql', 'python3-pymysql']
+      name: ['python-mysqldb', 'python-pymysql', 'python3-pymysql']
       update_cache: yes 
       state: latest
 

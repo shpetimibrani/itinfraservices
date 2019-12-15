@@ -4,7 +4,9 @@
   become: yes
   roles:
     - node_exporter
+    - apache
     - apache_exporter
+    - mysql
     - sql_exporter
     - bind
 

@@ -10,6 +10,7 @@
     state: present
   become: yes
   with_items:
+  - python-mysqldb
   - python-pymysql
   - python3-pymysql
 

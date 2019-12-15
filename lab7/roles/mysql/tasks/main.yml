@@ -1,0 +1,25 @@
+- name: Install MySQL
+  apt: 
+    name=mysql-server
+    update_cache=yes 
+    state=latest
+
+- name: Install python modules for ansible
+  apt: 
+    name: ['python-pymysql', 'python3-pymysql', 'python-mysqldb']
+    update_cache: yes 
+    state: latest
+    
+- name: Start Mysql Service
+  service: 
+    name: mysql 
+    state: started 
+    enabled: true
+
+- name: Create user for sql_exporter
+  mysql_user:
+    name: "prometheus"
+    password: "{{ prometheus_db_password }}"
+    priv: '*.*:ALL'
+    state: present
+    login_unix_socket: /var/run/mysqld/mysqld.sock

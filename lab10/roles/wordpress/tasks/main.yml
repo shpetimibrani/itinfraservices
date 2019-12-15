@@ -2,7 +2,7 @@
   apt:
     state: latest
     force_apt_get: yes
-    name: ['docker.io','python3-pip']
+    name: ['docker.io','python3-pip', 'python-pip']
 
 - name: Install docker pip
   pip:

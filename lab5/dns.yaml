@@ -48,11 +48,6 @@
         src: resolv.conf.j2
         dest: /etc/resolv.conf
 
-    - name: Restart bind9 anyway cuz why not
-      service:
-        name: bind9
-        state: restarted
-
   handlers:
     - name: get timestamp
       shell: "date +%s"
