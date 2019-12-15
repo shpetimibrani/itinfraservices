@@ -4,6 +4,7 @@
   hosts: all
   roles:
     - bind
+    - rsyslog-conf
 
 - name: Application server (Haproxy + wordpress)
   become: yes
@@ -25,7 +26,6 @@
   roles:
     - node_exporter
     - bind_exporter
-    - telegraf
 
 - name: exporters on infra02
   hosts: infra02
@@ -41,4 +41,5 @@
     - prometheus
     - grafana
     - influxdb
+    - telegraf
 
