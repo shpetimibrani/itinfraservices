@@ -28,7 +28,7 @@ Different versions of backups are always stored so restoring from backups is eas
 Backups older than 30 days are considered to be unusuable and will be deleted as they are very old.
 
 ## Recovery Point Objective
-The maximum tolerable timeframe of lost data in the event of a disaste is 1 hour.
+The maximum timeframe of lost data in the event of a disaster is 1 day, considering that backups are taken only daily.
 
 ## Recovery Time Objective
 The maximum tolerable downtime for services is 2 hours for extreme cases, although we aim to restore services and data from backup in maximum 1 hour.
