@@ -2,9 +2,9 @@ network:
   ethernets:
     ens38:
       {% if dns_role == "master" %}
-      addresses: [192.168.56.102/24]
+      addresses: [{{ master_ip }}/24]
       {% else %}
-      addresses: [192.168.56.103/24]
+      addresses: [{{ slave_ip }}/24]
       {% endif %}
       dhcp4: false
   version: 2
