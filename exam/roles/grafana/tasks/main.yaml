@@ -20,7 +20,7 @@
     published_ports:
       - 3000:3000 
     dns_servers:
-      - ns1.shibra.int
-      - ns2.shibra.int
+      - "{{ master_ip }}"
+      - "{{ slave_ip }}"
     volumes:
         - static-content:/var/lib/grafana
